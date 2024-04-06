@@ -1,0 +1,43 @@
+# Full reference https://github.com/foundry-rs/foundry/tree/master/crates/config
+
+[profile.default]
+auto_detect_solc = false
+block_timestamp = 1_680_220_800 # March 31, 2023 at 00:00 GMT
+bytecode_hash = "none"
+evm_version = "paris"           # See https://www.evmdiff.com/features?name=PUSH0&kind=opcode
+fuzz = { runs = 1_000 }
+gas_reports = ["*"]
+optimizer = true
+optimizer_runs = 10_000
+out = "out"
+script = "script"
+solc = "0.8.23"
+src = "src"
+test = "test"
+
+[profile.ci]
+fuzz = { runs = 10_000 }
+verbosity = 4
+
+[fmt]
+bracket_spacing = true
+int_types = "long"
+line_length = 80
+multiline_func_header = "all"
+number_underscore = "thousands"
+quote_style = "double"
+tab_width = 4
+wrap_comments = true
+
+[etherscan]
+bsc = { key = "${API_KEY_BSCSCAN}" }
+bsc-test = { key = "${API_KEY_BSCSCAN}", url = "https://api-testnet.bscscan.com/api" }
+mainnet = { key = "${API_KEY_ETHERSCAN}" }
+sepolia = { key = "${API_KEY_ETHERSCAN}" }
+
+[rpc_endpoints]
+localhost = "http://localhost:8545"
+mainnet = "https://ethereum-mainnet-rpc.allthatnode.com/${API_KEY_ALLTHATNODE}"
+sepolia = "https://ethereum-sepolia-rpc.allthatnode.com/${API_KEY_ALLTHATNODE}"
+bsc = "https://bsc-mainnet-rpc.allthatnode.com/${API_KEY_ALLTHATNODE}"
+bsc-test = "https://bsc-testnet-rpc.allthatnode.com/${API_KEY_ALLTHATNODE}"
